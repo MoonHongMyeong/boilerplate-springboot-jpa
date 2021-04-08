@@ -1,9 +1,9 @@
 package me.moon.boilerplate.entity.user;
 
+import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import me.moon.boilerplate.entity.BaseTimeEntity;
 
 import javax.persistence.*;
@@ -16,23 +16,23 @@ public class User extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
+    @NotNull
     private String name;
 
-    @NonNull
+    @NotNull
     private String email;
 
-    @NonNull
+    @NotNull
     private String password;
 
-    @NonNull
+    @NotNull
     private String phone;
 
-    @NonNull
+    @NotNull
     private String picture;
 
     @Enumerated(EnumType.STRING)
-    @NonNull
+    @NotNull
     private Role role;
 
     @Builder
@@ -48,4 +48,11 @@ public class User extends BaseTimeEntity {
     public String getRoleKey(){
         return this.role.getKey();
     }
+
+    public void update(String name, String phone, String picture){
+        this.name=name;
+        this.phone=phone;
+        this.picture=picture;
+    }
+
 }
